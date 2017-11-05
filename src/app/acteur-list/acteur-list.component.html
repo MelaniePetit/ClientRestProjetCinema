@@ -1,0 +1,54 @@
+<div class="listeActeurs">
+  
+  <div class="text-films">
+    <h1>{{title}}</h1>
+  </div>
+
+   <div class="tableauActeurs">
+    <table class="table table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Date de Naissance</th>
+          <th scope="col">Date de Décès</th>        
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-container *ngFor="let acteur of acteurs">
+          <td>
+            <input type="text" class="form-control input-sm" [hidden]="!testId(acteur.id)" [(ngModel)]="acteur.nom">
+            <p [hidden]="testId(acteur.id)">{{acteur.nom}}</p>
+          </td>
+          <td>
+              <input type="text" class="form-control input-sm" [hidden]="!testId(acteur.id)" [(ngModel)]="acteur.prenom">
+              <p [hidden]="testId(acteur.id)">{{acteur.prenom}}</p>
+          </td>
+          <td>
+              <input type="date" class="form-control input-sm" [hidden]="!testId(acteur.id)" [(ngModel)]="acteur.dateNaiss">              
+              <p [hidden]="testId(acteur.id)">{{acteur.dateNaiss || '-'}}</p>
+          </td>
+          <td>
+              <input type="date" class="form-control input-sm"[hidden]="!testId(acteur.id)" [(ngModel)]="acteur.dateDeces">              
+              <p [hidden]="testId(acteur.id)">{{acteur.dateDeces || '-'}}</p>
+          </td> 
+          <td>
+            <button type="button" class="btn btn-info" [hidden]="testId(acteur.id)" (click)="editActeur(acteur)"><i class="material-icons">mode_edit</i></button>          
+            <button type="button" class="btn btn-success" [hidden]="!testId(acteur.id)" (click)="updateActeur(acteur)"><i class="material-icons">save</i></button>
+            <button type="button" class="btn btn-danger" (click)="deleteActeur(acteur)"><i class="material-icons">delete_forever</i></button>                
+          </td>
+        </tr>
+        <tr>
+          <td><input [(ngModel)]="newActeur.nom" type="text" class="form-control input-sm" id="inputNom" placeholder="Nom" required></td>
+          <td><input [(ngModel)]="newActeur.prenom" type="text" class="form-control input-sm" id="inputPrenom" placeholder="Prenom"></td>
+          <td><input [(ngModel)]="newActeur.dateNaiss" type="date" value="2015-08-09" class="form-control input-sm" id="inputDateNaiss" required></td>
+          <td><input [(ngModel)]="newActeur.dateDeces" type="date" class="form-control input-sm" id="inputDateDeces"></td>
+          <td>
+            <button type="button" class="btn btn-success" (click)="createActeur(newActeur)"><i class="material-icons">save</i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> 
+  

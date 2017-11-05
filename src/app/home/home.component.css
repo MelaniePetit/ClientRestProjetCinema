@@ -1,0 +1,16 @@
+.citation-text {
+    font-family: 'Pinyon Script', cursive;
+    color: black;
+    text-shadow: 2px 2px 2px #686565;   
+    text-align: center;
+    margin: 50px
+}
+
+h1{
+    font-size: 5vw;    
+}
+
+img{
+    width: 25%;
+    height: auto;
+}
