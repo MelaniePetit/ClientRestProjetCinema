@@ -3,10 +3,7 @@ export class Acteur {
     public nom: string;
     public prenom: string;
     public dateNaiss: string;
-    public dateDeces: string;  
-    
-    constructor(    ){}
+    public dateDeces: string;
 
-    
-    
+    constructor() {}
 }

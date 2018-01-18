@@ -1,0 +1,21 @@
+.listeCat {
+    text-align: center;
+    margin: 2%;
+  }
+  
+  h1{
+    font-family: 'Pinyon Script', cursive;
+    color: black;
+    text-shadow: 2px 2px 2px #686565;  
+    font-size: 80px;
+  }
+  
+  .list-group {
+    margin-left: 20%;
+    margin-right: 20%;
+
+  }
+
+  #accordion{
+      margin: 5%
+  }
