@@ -1,23 +1,26 @@
 <div class="listeCat">
-  
-    <div class="text-films">
-      <h1>{{title}}</h1>
-    </div>
-  
-    <div class="panel-group" id="accordion">
-      
-      <div *ngFor="let categorie of categories" class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{categorie.code}}">{{categorie.libelle}}</a>
-          </h4>
-        </div>
-        <div id="collapse{{categorie.code}}" class="panel-collapse collapse in">
-          <div class="panel-body">
-              <ul *ngFor="let film of categorie.films" class="list-group">
-                <li class="list-group-item">{{film.titre}} - {{film.dateSortie}}</li>
-              </ul>
-            </div>
+
+  <div class="text-films">
+    <h1>{{title}}</h1>
+  </div>
+
+  <div class="panel-group" id="accordion">
+
+    <div *ngFor="let categorie of categories" class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{categorie.code}}">{{categorie.libelle}}</a>
+        </h4>
+      </div>
+      <div id="collapse{{categorie.code}}" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <div class="list-group">
+            <a *ngFor="let film of categorie.films" href="#" class="list-group-item list-group-item-action">
+              <h3>{{film.titre}}</h3>
+              <p>{{film.dateSortie}}</p>
+            </a>
+          </div>
         </div>
       </div>
+    </div>
   </div>

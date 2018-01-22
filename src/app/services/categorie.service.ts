@@ -21,6 +21,14 @@ export class CategorieService {
                         .catch(this.handleError);
     }
 
+    getCategorie(code: Categorie): Promise<Categorie> {
+        const url = this.categorieUrl + 'get?code=' + code;
+        return this.http.get(url)
+                        .toPromise()
+                        .then(response => response.json() as Categorie)
+                        .catch(this.handleError);
+    }
+
     getFilms(code: String): Promise<Film[]> {
         const url = this.categorieUrl + 'getFilms?code=' + code;
         return this.http.get(url)

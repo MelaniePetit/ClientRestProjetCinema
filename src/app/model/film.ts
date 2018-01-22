@@ -11,6 +11,7 @@ export class Film {
     public montantRecette: string;
     public realisateur: Realisateur;
     public categorie: Categorie;
+    public personnages: Personnage[];
 
     constructor() {
         this.realisateur = new Realisateur();

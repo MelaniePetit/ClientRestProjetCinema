@@ -20,6 +20,14 @@ export class FilmService {
                         .catch(this.handleError);
     }
 
+    getFilm(id: number): Promise<Film> {
+        const url = this.FilmUrl + id;
+        return this.http.get(url)
+                        .toPromise()
+                        .then(response => response.json() as Film)
+                        .catch(this.handleError);
+    }
+
     // Films d'un réalisateur
     getFilmByReal(id: number): Promise<Film> {
         const url = this.FilmUrl + 'liste/' + id;

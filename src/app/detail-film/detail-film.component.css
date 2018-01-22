@@ -1,0 +1,12 @@
+.detailFilm {
+    text-align: center;
+    margin: 2%;
+  }
+  
+  h1{
+    font-family: 'Pinyon Script', cursive;
+    color: black;
+    text-shadow: 2px 2px 2px #686565;  
+    font-size: 80px;
+  }
+  

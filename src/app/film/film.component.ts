@@ -30,19 +30,35 @@ export class FilmComponent implements OnInit {
     private realisateurService: RealisateurService) { }
 
   ngOnInit() {
-    this.filmService.getFilms().then(films => this.films = films);
+    this.getFilms();
     this.categorieService.getCategories().then(cat => this.categories = cat);
     this.realisateurService.getRealisateurs().then(real => this.realisateurs = real);
     this.newFilm = new Film();
   }
 
+  getFilms() {
+    this.filmService.getFilms().then(films => {
+      for (let film of films){
+        if (film.categorie.code === undefined) {
+          this.categorieService.getCategorie(film.categorie).then(cat => film.categorie = cat);
+        }
+        if (film.realisateur.id === undefined) {
+          this.realisateurService.getRealisateur(film.realisateur).then(real => {
+            film.realisateur = real;
+          });
+        }
+      }
+      this.films = films;
+    });
+  }
+
   deleteFilm(film: Film): void {
-    this.filmService.deleteFilm(film.id)
-                    .then(() => {this.films = this.films.filter(b => b.id !== film.id);
-                                  if (this.selectedFilm === film) {
-                                    this.selectedFilm = null;
-                                  }
-                                });
+    this.filmService.deleteFilm(film.id).then(() => {
+      this.films = this.films.filter(b => b.id !== film.id);
+      if (this.selectedFilm === film) {
+        this.selectedFilm = null;
+      }
+    });
   }
 
   createFilm(film: Film): void {
@@ -50,6 +66,7 @@ export class FilmComponent implements OnInit {
       .then(data => {
         this.films.push(data);
         this.selectedFilm = null;
+        this.getFilms();
       });
   }
 

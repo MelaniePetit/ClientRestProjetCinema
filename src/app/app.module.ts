@@ -15,6 +15,7 @@ import { ActeurComponent } from './acteur/acteur.component';
 import { FilmComponent } from './film/film.component';
 import { RealisateurComponent } from './realisateur/realisateur.component';
 import { CategorieComponent } from './categorie/categorie.component';
+import { DetailFilmComponent } from './detail-film/detail-film.component';
 
 const routes: Routes = [
   {'path': '', 'redirectTo': '/home', 'pathMatch': 'full'},
@@ -23,6 +24,8 @@ const routes: Routes = [
   {'path': 'film', 'component': FilmComponent},
   {'path': 'realisateur', 'component': RealisateurComponent},
   {'path': 'categorie', 'component': CategorieComponent},
+  {'path': 'detail/:id', 'component': DetailFilmComponent},
+
 ];
 
 @NgModule({
@@ -35,6 +38,7 @@ const routes: Routes = [
     FilmComponent,
     RealisateurComponent,
     CategorieComponent,
+    DetailFilmComponent,
 
   ],
   imports: [

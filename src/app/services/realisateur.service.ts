@@ -21,11 +21,11 @@ export class RealisateurService {
                         .catch(this.handleError);
     }
 
-    getRealisateur(id: number): Promise<Realisateur> {
+    getRealisateur(id: Realisateur): Promise<Realisateur> {
         const url = this.realisateurUrl + id;
         return this.http.get(url)
                         .toPromise()
-                        .then(response => response.json().data as Realisateur)
+                        .then(response => response.json() as Realisateur)
                         .catch(this.handleError);
     }
 

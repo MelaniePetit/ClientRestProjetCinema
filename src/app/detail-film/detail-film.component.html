@@ -1,0 +1,43 @@
+<div class="detailFilm">
+
+  <div class="text-details">
+    <h1>{{film.titre}}</h1>
+  </div>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h2 class="display-4">Détails</h2>
+      <div class="row">
+        <div class="col">
+          <p class="lead">Durée : {{film.duree}} min</p>
+        </div>
+        <div class="col">
+          <p class="lead">Sorti le : {{film.dateSortie}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p class="lead">Réalisateur : {{film.realisateur.nom}} {{film.realisateur.prenom}}</p>
+        </div>
+        <div class="col">
+          <p class="lead">Catégorie : {{film.categorie.libelle}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p class="lead">Budget : {{film.budget}} €</p>
+        </div>
+        <div class="col">
+          <p class="lead">Recette : {{film.montantRecette}} €</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h2 class="display-4">Acteurs</h2>
+      <p *ngFor='let perso of film.personnages'>{{perso.acteur.prenom}} {{perso.acteur.nom}} dans le rôle de {{perso.nom}}</p>
+    </div>
+  </div>
+</div>

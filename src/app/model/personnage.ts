@@ -7,5 +7,7 @@ export class Personnage {
     public nom: String;
     public acteur: Acteur;
     public films: Film;
+
+    constructor() {}
 }
 

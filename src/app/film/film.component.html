@@ -1,84 +1,103 @@
 <div class="listeFilms">
-  
+
   <div class="text-films">
     <h1>{{title}}</h1>
   </div>
 
-   <div class="tableauFilms">
+  <div class="tableauFilms">
     <table class="table table-hover table-dark">
       <thead>
         <tr>
           <th scope="col">Titre</th>
           <th scope="col">Durée</th>
           <th scope="col">Sortie</th>
-          <th scope="col">Budget</th>    
-          <th scope="col">Recettes</th>        
-          <th scope="col">Réalisateur</th>  
-          <th scope="col">Catégorie</th>              
+          <th scope="col">Budget</th>
+          <th scope="col">Recettes</th>
+          <th scope="col">Réalisateur</th>
+          <th scope="col">Catégorie</th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-container *ngFor="let film of films">
+        <tr ng-container *ngFor="let film of films"  >
           <td>
-            <input type="text" class="form-control input-sm" [hidden]="!testId(film.id)" [(ngModel)]="film.nom">
-            <p [hidden]="testId(film.id)">{{film.titre}}</p>
+            <input type="text" class="form-control input-sm" [hidden]="!testId(film.id)" [(ngModel)]="film.nom" placeholder={{film.titre}}>
+            <a href='/detail/{{film.id}}' [hidden]="testId(film.id)">{{film.titre}}</a>
           </td>
           <td>
-              <input type="text" class="form-control input-sm" [hidden]="!testId(film.id)" [(ngModel)]="film.prenom">
-              <p [hidden]="testId(film.id)">{{film.duree}}</p>
+            <input type="number" class="form-control input-sm" [hidden]="!testId(film.id)" [(ngModel)]="film.prenom">
+            <p [hidden]="testId(film.id)">{{film.duree}}</p>
           </td>
           <td>
-              <input type="date" class="form-control input-sm" [hidden]="!testId(film.id)" [(ngModel)]="film.dateSortie">              
-              <p [hidden]="testId(film.id)">{{film.dateSortie}}</p>
+            <input type="date" class="form-control input-sm" [hidden]="!testId(film.id)" [(ngModel)]="film.dateSortie">
+            <p [hidden]="testId(film.id)">{{film.dateSortie}}</p>
           </td>
           <td>
-              <input type="text" class="form-control input-sm"[hidden]="!testId(film.id)" [(ngModel)]="film.budget">              
-              <p [hidden]="testId(film.id)">{{film.budget}}</p>
+            <input type="text" class="form-control input-sm" [hidden]="!testId(film.id)" [(ngModel)]="film.budget">
+            <p [hidden]="testId(film.id)">{{film.budget}}</p>
           </td>
           <td>
-            <input type="text" class="form-control input-sm"[hidden]="!testId(film.id)" [(ngModel)]="film.montantRecette">              
+            <input type="text" class="form-control input-sm" [hidden]="!testId(film.id)" [(ngModel)]="film.montantRecette">
             <p [hidden]="testId(film.id)">{{film.montantRecette}}</p>
-          </td> 
+          </td>
           <td>
             <select class="form-control" [(ngModel)]="film.realisateur" [hidden]="!testId(film.id)">
               <option *ngFor="let realisateur of realisateurs" [ngValue]="realisateur.id">{{realisateur.nom}} {{realisateur.prenom}}</option>
-            </select>            
+            </select>
             <p [hidden]="testId(film.id)">{{film.realisateur.nom}} {{film.realisateur.prenom}}</p>
           </td>
           <td>
             <select class="form-control" [(ngModel)]="film.categorie" [hidden]="!testId(film.id)">
               <option *ngFor="let categorie of categories" [ngValue]="categorie.code">{{categorie.libelle}}</option>
-            </select>            
-          <p [hidden]="testId(film.id)">{{film.categorie.libelle}}</p>
+            </select>
+            <p [hidden]="testId(film.id)">{{film.categorie.libelle}}</p>
           </td>
           <td>
-            <button type="button" class="btn btn-info" [hidden]="testId(film.id)" (click)="editFilm(film)"><i class="material-icons">mode_edit</i></button>          
-            <button type="button" class="btn btn-success" [hidden]="!testId(film.id)" (click)="updateFilm(film)"><i class="material-icons">save</i></button>
-            <button type="button" class="btn btn-danger" (click)="deleteFilm(film)"><i class="material-icons">delete_forever</i></button>                
+            <button type="button" class="btn btn-info btn-sm" [hidden]="testId(film.id)" (click)="editFilm(film)">
+              <i class="material-icons">mode_edit</i>
+            </button>
+            <button type="button" class="btn btn-success btn-sm" [hidden]="!testId(film.id)" (click)="updateFilm(film)">
+              <i class="material-icons">save</i>
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" (click)="deleteFilm(film)">
+              <i class="material-icons">delete_forever</i>
+            </button>
           </td>
         </tr>
         <tr>
-          <td><input [(ngModel)]="newFilm.titre" type="text" class="form-control input-sm" id="inputTitre" placeholder="Titre" required></td>
-          <td><input [(ngModel)]="newFilm.duree" type="number" class="form-control input-sm" id="inputDuree" placeholder="Durée"></td>
-          <td><input [(ngModel)]="newFilm.dateSortie" type="date" value="2015-08-09" class="form-control input-sm" id="inputDateSortie" required></td>
-          <td><input [(ngModel)]="newFilm.budget" type="number" class="form-control input-sm" id="inputBudget"></td>
-          <td><input [(ngModel)]="newFilm.montantRecette" type="number" class="form-control input-sm" id="inputMontant"></td>
+          <td>
+            <input [(ngModel)]="newFilm.titre" type="text" class="form-control input-sm" id="inputTitre" placeholder="Titre"
+              required>
+          </td>
+          <td>
+            <input [(ngModel)]="newFilm.duree" type="number" class="form-control input-sm" id="inputDuree" placeholder="Durée">
+          </td>
+          <td>
+            <input [(ngModel)]="newFilm.dateSortie" type="date" value="2015-08-09" class="form-control input-sm" id="inputDateSortie"
+              required>
+          </td>
+          <td>
+            <input [(ngModel)]="newFilm.budget" type="number" class="form-control input-sm" id="inputBudget">
+          </td>
+          <td>
+            <input [(ngModel)]="newFilm.montantRecette" type="number" class="form-control input-sm" id="inputMontant">
+          </td>
           <td>
             <select class="form-control input-sm" [(ngModel)]="newFilm.realisateur.id">
-                <option *ngFor="let realisateur of realisateurs" [ngValue]="realisateur.id">{{realisateur.nom}} {{realisateur.prenom}}</option>
+              <option *ngFor="let realisateur of realisateurs" [ngValue]="realisateur.id">{{realisateur.nom}} {{realisateur.prenom}}</option>
             </select>
           </td>
           <td>
             <select class="form-control input-sm" [(ngModel)]="newFilm.categorie.code">
-                <option *ngFor="let categorie of categories" [ngValue]="categorie.code"> {{categorie.libelle}}</option>
-            </select> 
+              <option *ngFor="let categorie of categories" [ngValue]="categorie.code"> {{categorie.libelle}}</option>
+            </select>
           </td>
           <td>
-            <button type="button" class="btn btn-success" (click)="createFilm(newFilm)"><i class="material-icons">save</i></button>
+            <button type="button" class="btn btn-success" (click)="createFilm(newFilm)">
+              <i class="material-icons">save</i>
+            </button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-</div> 
-  
+</div>
