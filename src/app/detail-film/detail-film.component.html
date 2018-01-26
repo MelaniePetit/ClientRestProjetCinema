@@ -6,7 +6,7 @@
 
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h2 class="display-4">Détails</h2>
+      <h3 class="display-5">Détails</h3>
       <div class="row">
         <div class="col">
           <p class="lead">Durée : {{film.duree}} min</p>
@@ -36,8 +36,8 @@
 
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h2 class="display-4">Acteurs</h2>
-      <p *ngFor='let perso of film.personnages'>{{perso.acteur.prenom}} {{perso.acteur.nom}} dans le rôle de {{perso.nom}}</p>
+      <h3 class="display-5">Acteurs</h3>
+      <p *ngFor='let perso of film.personnages'>{{perso.acteur.prenom}} {{perso.acteur.nom}} <i>dans le rôle de</i> {{perso.nom}}</p>
     </div>
   </div>
 </div>
